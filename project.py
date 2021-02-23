@@ -245,9 +245,6 @@ O bien, si tienes todos los datos listos podemos comenzar""")
 
 
 
-
 if __name__ == '__main__':
-    #No pospongas
-
     financiero = Asistente_Financiero_AI()
     financiero.iniciar()
