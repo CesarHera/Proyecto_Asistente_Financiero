@@ -3,6 +3,7 @@ class Funciones:
         pass
 
 
+
     def _seleccionador(self, opciones):
         contador = 1
         for i in opciones:
@@ -20,15 +21,16 @@ class Funciones:
         return self._seleccionador(opciones)
 
 
+
     def _declarar(self, texto, nombre_lista, tipo='default'): #Ayuda a crear dos listas de un mismo tema, una con los nombres y otra con valores
         nombres = []
         valores = []
 
-        cuantas = input(texto)
+        cuantas = input(texto) #Este bloque pregunta cuantos valores declarará el usuario y así se hacen dos list, una que guardará los nombres y otra para valores
         try:
             cuantas = int(cuantas)
         except ValueError:
-            print('Ingresa un número')
+            print('INGRESA UN NÚMERO | REINICIANDO PREGUNTA')
             return self._declarar(texto, nombre_lista)
 
         if cuantas == 0:
@@ -36,15 +38,28 @@ class Funciones:
             valores.append(0)
             return nombres, valores
 
-        for i in range(cuantas):
-            nombre = input(f'¿Cómo se llama el valor número {i + 1}?: ')
+        contador = 1
+        
+        while contador < cuantas: #Aquí se va declarando el nombre y valor de cada elemento, si no ingresa datos admitidos, se reinicia la declaración
+            nombre = input(f'¿Cómo se llama el valor número {contador}?: ')
+            valor = input('¿Qué valor tiene?: ')
+            try:
+                valor = int(valor)
+            except ValueError:
+                print(f'Ingresa NUMEROS | REINICIANDO VALOR {contador}')
+                continue
+            
             nombres.append(nombre)
-            valor = int(input('¿Qué valor tiene?: '))
-            if tipo == 'depreciable':
-                depreciacion = int(input('¿Cuánto se ha depreciado (si no sabes teclea 0)?: '))
+
+            if tipo == 'depreciable': #Añadí esta opción para restarle alguna depreciación a los valores al mismo tiempo que se declaran
+                depreciacion = int(input('¿Cuánto se ha depreciado (RECUERDA DECLARAR DEPRECIACIONES CON VALORES NEGATIVOS)?: '))
                 valor -= depreciacion
+
             valores.append(valor)
+            contador += 1
+
         return nombres, valores
+
 
 
     def _imprimir(self, lista_nombres, lista_valores, nombre='', tipo='imprimir_nombre'): #Ayuda recorrer toda la estructura e ir imprimiendo cada valor
@@ -54,6 +69,7 @@ class Funciones:
             print(f'{lista_nombres[i]} = {lista_valores[i]}')
 
     
+
     def _manipular_lista(self, lista, tipo='default', resultado=0): #Ayuda a obtener resultados con la estructura de datos ingresada, depende de qué se busque hacer.
         if tipo == 'values':
             for i in lista.values():

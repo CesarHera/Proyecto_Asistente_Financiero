@@ -1,4 +1,4 @@
-from funcionalidades import Funciones
+from funcionalidades import Funciones #Lo necesito para usar funciones como _declarar e _imprimir
 
 class Estados_financieros:
     def __init__(self):
@@ -8,6 +8,7 @@ class Estados_financieros:
     def _balance_general(self):
         print('---\nGENERANDO BALANCE GENERAL\n---')
         print('Empezaremos sumando todos los activos, después los pasivos y por último el capital contable')
+
 
         #Declarando variables para después operarlas
         print('\n-DECLARANDO ACTIVOS-')
@@ -21,6 +22,7 @@ class Estados_financieros:
         activos = self._funcionalidades._manipular_lista(activos_diferidos_valores, tipo='suma', resultado=activos)
         print(f'TOTAL ACTVOS = {activos}')
 
+
         print('\n-DECLARANDO PASIVOS-')
         pasivos_circulantes_nombres, pasivos_circulantes_valores = self._funcionalidades._declarar('¿Cuántos pasivos circulantes vas a declarar?: ', 'pasivos circulantes')
         pasivos = self._funcionalidades._manipular_lista(pasivos_circulantes_valores, tipo='suma')
@@ -32,13 +34,16 @@ class Estados_financieros:
         pasivos = self._funcionalidades._manipular_lista(pasivos_diferidos_valores, tipo='suma', resultado=pasivos)
         print(f'TOTAL PASIVOS = {pasivos}')
 
+
         print('\n-DECLARANDO CAPITAL CONTABLE-')
         capital_contable_nombres, capital_contable_valores = self._funcionalidades._declarar('¿Por cuántos elementos estará compuesto tu capital contable?: ', 'capital contable')
         capital_contable = self._funcionalidades._manipular_lista(capital_contable_valores, tipo='suma')
         print(f'TOTAL CAPITAL CONTABLE = {capital_contable}')
 
+
         terminar = input('-Presiona ENTER para ver los resultados de tu balance general-')
         #Solo agregué esto para que den enter y después se impriman todos los resultados
+
 
         #Imprimiendo Todos los resultados
         print('-' * 80)
@@ -47,10 +52,12 @@ class Estados_financieros:
         self._funcionalidades._imprimir(activos_diferidos_nombres, activos_diferidos_valores, 'Activos diferidos')
         print(f'\nTOTAL ACTVOS = {activos}\n------\n')
 
+
         self._funcionalidades._imprimir(pasivos_circulantes_nombres, activos_circulantes_valores, 'Pasivos circulantes')
         self._funcionalidades._imprimir(pasivos_no_circulantes_nombres, pasivos_no_circulantes_valores, 'Pasivos no circulantes')
         self._funcionalidades._imprimir(pasivos_diferidos_nombres, activos_diferidos_valores, 'Pasivos diferidos')
         print(f'\nTOTAL PASIVOS = {pasivos}\n------\n')
+
 
         self._funcionalidades._imprimir(capital_contable_nombres, capital_contable_valores, 'Capital contable')
         print(f'\nTOTAL CAPITAL CONTABLE = {capital_contable}\n------\n')
@@ -64,29 +71,35 @@ class Estados_financieros:
         print('---\nESTADO DE RESULTADOS\n---')
         print('📱Irémos declarando los valores necesarios para deducir la utilidad neta:')
 
+
         #Declarando variables para operarlas
         print('\n-DEDUCIENDO UTILIDAD BRUTA-')
         utilidad_bruta_nombres, utilidad_bruta_valores = self._funcionalidades._declarar('(EL VALOR DE CADA IMPORTE O GASTO QUE DECLARES TIENE QUE SER NEGATIVO)\n¿Cuántos elementos declararás para calcular la utilidad bruta?: ', 'Utilidades brutas')
         utilidad_bruta = self._funcionalidades._manipular_lista(utilidad_bruta_valores, tipo='suma')
         print(f'Total utilidad bruta = {utilidad_bruta}')
 
+
         print('\n-DEDUCIENDO UTILIDAD EN OPERACIÓN-')
         utilidad_en_operacion_nombres, utilidad_en_operacion_valores = self._funcionalidades._declarar('(EL VALOR DE CADA IMPORTE O GASTOS QUE DECLARES TIENE QUE SER NEGATIVO)\n¿Cuántos elementos declararás para calcular la Utilidad en operacion?: ', 'Utilidades en operacion')
         utilidad_en_operacion = self._funcionalidades._manipular_lista(utilidad_en_operacion_valores, tipo='suma')
         print(f'Total utilidad en operación = {utilidad_en_operacion}')
+
 
         print('\n-DEDUCIENDO UTILIDAD ANTES DE IMPUESTOS-')
         utilidad_antes_de_impuestos_nombres, utilidad_antes_de_impuestos_valores = self._funcionalidades._declarar('(EL VALOR DE CADA IMPORTE O GASTOS QUE DECLARES TIENE QUE SER NEGATIVO)\n¿Cuántos elementos declararás para calcular la Utilidad antes de impuestos (Aquí se declaran otras ganancias y otros gastos)?: ', 'Utilidades antes de impuestos')
         utilidad_antes_de_impuestos = self._funcionalidades._manipular_lista(utilidad_antes_de_impuestos_valores, tipo='suma')
         print(f'Total utilidad antes de impuestos = {utilidad_antes_de_impuestos}')
 
+
         print('\n-DEDUCIENDO UTILIDAD NETA-')
         utilidad_con_impuestos_nombres, utilidad_con_impuestos_valores = self._funcionalidades._declarar('(EL VALOR DE CADA IMPORTE O GASTOS QUE DECLARES TIENE QUE SER NEGATIVO)\n¿Cuántos elementos declararás para calcular la utilidad neta (Aquí se declaran impuestos como ISR y PTU)?: ', 'Utilidades con impuestos')
         utilidad_con_impuestos = self._funcionalidades._manipular_lista(utilidad_con_impuestos_valores, tipo='suma')
         print(f'Total utilidad neta = {utilidad_con_impuestos}')
 
+
         terminar = input('-Presiona ENTER para ver toda la graficación de tu estado de resultados-')
         #Solo agregué esto para que den enter y darles los resultados
+
 
         #Imprimiendo Todos los resultados
         print('-' * 80)
@@ -100,3 +113,4 @@ class Estados_financieros:
         print('-' * 80)
         print(f'-\nTOTAL UTILIDAD NETA = {utilidad_con_impuestos}\n-')
         print('-' * 80)
+

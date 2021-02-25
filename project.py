@@ -1,11 +1,26 @@
 from funcionalidades import Funciones
 from estados import Estados_financieros
 
+
 class Asistente_Financiero:
     def __init__(self):
         self._usuario = None
         self._funcionalidades = Funciones()
         self._estados = Estados_financieros()
+
+
+    @property
+    def usuario(self):
+        return self._usuario
+    
+    @usuario.setter
+    def usuario(self, nuevo_usuario):
+        print(f'El nombre de usuario ahora es {nuevo_usuario}')
+        self._usuario = nuevo_usuario
+
+    @usuario.deleter
+    def usuario(self):
+        print('El nombre de usuario no puede ser borrado, pero si puedes reemplazarlo asignandole otro valor')
 
 
 
@@ -68,10 +83,12 @@ O bien, si tienes todos los datos listos podemos comenzar""")
                 self.estados_financieros_menu()
         elif elección == '3':
             print('Ejecutando Estado de cambios en la situación financiera')
+        elif elección == '4':
+            print('Ejecutando Estado de variaciones en el capital contable')
 
 
 
 if __name__ == '__main__':
     financiero = Asistente_Financiero()
-    financiero._usuario = 'Cesar'
+    financiero._usuario = 'Cesar' #Coloca tu nombre
     financiero.iniciar()
